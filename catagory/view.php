@@ -42,6 +42,7 @@ $row1=mysqli_fetch_assoc($data1);
     }
 ?>
 </select> <br> <br>
+<center>product details</center>
 PRODUCT NAME: <input type="text" name="pname"><br> <br>
 PRICE: <input type="text" name="price"><br><br>
 <button type="submit" name="submit">SUBMIT</button>
