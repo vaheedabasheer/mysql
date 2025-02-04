@@ -1,6 +1,17 @@
 <?php
 include 'connection.php';
 $data=mysqli_query($con,"SELECT * FROM stureg_tb");
+if(isset($_POST['search']))
+{
+    $name=$_POST['name'];
+   //  var_dump($name);
+   //  exit();
+    $data1=mysqli_query($con,"SELECT * FROM `stureg_tb` INNER JOIN mark ON stureg_tb.id=mark.id where name='$name'");
+    $row1=mysqli_fetch_assoc($data1);
+    $name1=$row1['name'];
+    var_dump($name1);
+    exit();
+}
 if(isset($_POST['submit']))
 {
 $stud=$_POST['stud'];
@@ -13,7 +24,9 @@ mysqli_query($con,"INSERT INTO `mark`(`maths`, `physics`, `chemistry`, `id`) VAL
 // echo "<script>alert ('inserted successfully');</script>";
 
 }
+
 $data1=mysqli_query($con,"SELECT `m_id`,stureg_tb.id,`maths`,`physics`,`chemistry`,`Name` FROM `mark` INNER JOIN `stureg_tb` ON mark.id=stureg_tb.id");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,12 +42,15 @@ $data1=mysqli_query($con,"SELECT `m_id`,stureg_tb.id,`maths`,`physics`,`chemistr
       }
       table{
          width:50%;
-        
-        
-      }
+ }
     </style>
 </head>
 <body>
+<form action="" method="post">
+   Search: <input type="text" name="name">
+   <button type="submit" name="search"> Search</button>
+
+   </form><br><br><br>
    <form action="" method="POST">
 Name       :    <select name="stud" class="form-control" id="">
 <option value="">SELECT</option>
@@ -83,5 +99,7 @@ Maths : <input type="text" name="math"> <br><br>
    </form>
 </table>
    </center>
+   
+
 </body>
 </html>

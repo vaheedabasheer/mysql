@@ -17,6 +17,7 @@ if(isset($_POST['submit']))
     echo "<script>'updated successfully';</script>";
     echo "<script>window.location.href='18jan_student_mark.php';</script>";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +36,7 @@ if(isset($_POST['submit']))
     </style>
 </head>
 <body>
+   
     <center>
   
         <form action="" method="POST">
